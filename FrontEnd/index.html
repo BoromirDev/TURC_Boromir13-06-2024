@@ -14,14 +14,35 @@
   <body>
     <aside class="modal" aria-hidden="true">
       <div class="modal-wrapper">
-        <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        <button id="close-base-modal" class="close-modal"><i class="fa-solid fa-xmark"></i></button>
         <h1 class="h1-modal">Galerie photo</h1>
         <div class="modal-gallery"></div>
         <hr class="ligne" />
         <div class="div-btn-modal">
-          <input type="file" accept="image/*" id="upload-photo" style="display: none" />
-          <label for="upload-photo" class="btn-projets">Ajouter une photo</label>
+          <button id="btnOpenUploadModal" class="btn-projets">Ajouter une photo</button>
         </div>
+      </div>
+    </aside>
+    <aside class="uploadModal">
+      <div class="modal-wrapper">
+        <button class="return-modal"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="close-upload-modal" class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        <h1 class="h1-modal">Ajout photo</h1>
+        <form>
+          <div class="container-file">
+            <span><i class="icon-add fa-regular fa-image fa-5x"></i></span>
+            <label class="custom-button-modal-add" for="file">+ Ajouter photo</label>
+            <input type="file" id="file" name="image" style="display: none" />
+            <img class="image-viewing" src="#" alt="Aperçu de l'image" />
+            <p>jpg, png : 4mo max</p>
+          </div>
+          <label for="title">Titre</label>
+          <input class="title-square-modal-add" type="text" id="title" name="title" />
+          <label for="category">Catégorie</label>
+          <select class="title-square-modal-add" name="category" id="category"></select>
+          <hr class="ligne" />
+          <button class="button-validation-modal-add">Valider</button>
+        </form>
       </div>
     </aside>
     <div class="barre-edition">
@@ -128,6 +149,7 @@
         </ul>
       </nav>
     </footer>
+    <script src="assets/js/modal.js"></script>
     <script src="assets/js/index.js"></script>
   </body>
 </html>

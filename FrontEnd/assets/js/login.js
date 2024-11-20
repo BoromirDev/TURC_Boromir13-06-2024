@@ -2,10 +2,10 @@ const form = document.querySelector('form');
 
 // Quand on submit
 form.addEventListener("submit", (event) => {
-    // On empêche le comportement par défaut
+    // On empeche le comportement par défaut
     event.preventDefault();
 
-    console.log("Il n’y a pas eu de rechargement de page");
+    console.log("Il n'y a pas eu de rechargement de page");
 
     const email = document.getElementById("email").value;
     const mdp = document.getElementById("mot-de-passe").value;
@@ -21,27 +21,27 @@ form.addEventListener("submit", (event) => {
     };
 
     fetch(url, {
-        method: 'POST', // Spécifie la méthode HTTP POST
+        method: 'POST', // Specifie la methode HTTP POST
         headers: {
-            'Content-Type': 'application/json', // Spécifie le type de contenu comme JSON
+            'Content-Type': 'application/json', // Specifie le type de contenu comme JSON
         },
-        body: JSON.stringify(data) // Convertit les données JavaScript en JSON
+        body: JSON.stringify(data) // Convertit les donnees JavaScript en JSON
     })
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json(); // Parse la réponse JSON
+        return response.json(); // Parse la reponse JSON
     })
     .then(data => {
-        console.log('Success:', data); // Gère les données renvoyées par l'API
+        console.log('Success:', data); // Gere les donnees renvoyees par l'API
 
         localStorage.setItem('token', data.token);
 
         window.location.href = "index.html"; 
     })
     .catch(error => {
-        console.error('Error:', error); // Gère les erreurs
+        console.error('Error:', error); // Gere les erreurs
         errorMessage.textContent = "Email ou mot de passe incorrect";
     });
 });

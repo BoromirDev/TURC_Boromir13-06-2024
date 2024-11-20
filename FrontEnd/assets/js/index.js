@@ -69,63 +69,9 @@ function modeAdmin() {
   const barreEdition = document.querySelector('.barre-edition');
   barreEdition.style.display = 'flex';
 
-  const modal = document.querySelector('.modal');
-  const openModalButton = document.querySelector('.btn-modal');
-  console.log(openModalButton)
-  
-  openModalButton.addEventListener('click', () => {
-    modal.style.display = 'flex';
-  });
-
-  const modalGallery = document.querySelector('.modal-gallery');
-  modalGallery.innerHTML = '';
-
-  myWorks.forEach((work) => {
-    const figure = document.createElement('figure');
-    const img = document.createElement('img');
-    figure.setAttribute('id','modal-work-' + work.id)
-    img.src = work.imageUrl;
-    img.classList.add("modal-image");
-
-    const supressButton = document.createElement('button')
-    supressButton.addEventListener('click', (event) => {
-      const supressWorkModal = document.getElementById('modal-work-' + work.id)
-      supressWorkModal.remove()
-      const supressWorkGallery = document.getElementById('gallery-work-' + work.id)
-      supressWorkGallery.remove()
-      let index = myWorks.indexOf(work)
-      myWorks.splice(index, 1)
-      let myFilteredWork = myWorksFiltered.find((workFiltered) => workFiltered.id == work.id)
-      index = myWorksFiltered.indexOf(myFilteredWork)
-      myWorksFiltered.splice(index, 1)
-
-      // fetch delete vers le backend
-    })
-
-    const figcaption = document.createElement('figcaption');
-    console.log(work)
-    figure.appendChild(img);
-    figure.appendChild(supressButton);
-    figure.appendChild(figcaption);
-    modalGallery.appendChild(figure);
-
-    // ajouter un boutton suppression a chaque image de work
-
-  });
-
-  const closeModalButton = document.querySelector('.close-modal');
-  closeModalButton.addEventListener('click', closeModal);
-  
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-}
-
-function closeModal() {
-  const modal = document.querySelector('.modal');
-  modal.style.display = 'none';
+  addWorksToBaseModal(myWorks)
+  addEventsForBaseModal()
+  addEventsForUploadModal()
 }
 
 /* EXECUTION DE CODE */
@@ -159,3 +105,4 @@ async function main() {
 }
 
 main()
+
